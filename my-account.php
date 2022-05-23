@@ -3,32 +3,32 @@ session_start();
 error_reporting(0);
 include('includes/config.php');
 if (strlen($_SESSION['login']) == 0) {
-	header('location:login.php');
+    header('location:login.php');
 } else {
-	if (isset($_POST['update'])) {
-		$name = $_POST['name'];
-		$contactno = $_POST['contactno'];
-		$query = mysqli_query($con, "update users set name='$name',contactno='$contactno' where id='" . $_SESSION['id'] . "'");
-		if ($query) {
-			echo "<script>alert('Your info has been updated');</script>";
-		}
-	}
+    if (isset($_POST['update'])) {
+        $name = $_POST['name'];
+        $contactno = $_POST['contactno'];
+        $query = mysqli_query($con, "update users set name='$name',contactno='$contactno' where id='" . $_SESSION['id'] . "'");
+        if ($query) {
+            echo "<script>alert('Your info has been updated');</script>";
+        }
+    }
 
 
-	date_default_timezone_set('Asia/Kolkata'); // change according timezone
-	$currentTime = date('d-m-Y h:i:s A', time());
+    date_default_timezone_set('Asia/Kolkata'); // change according timezone
+    $currentTime = date('d-m-Y h:i:s A', time());
 
 
-	if (isset($_POST['submit'])) {
-		$sql = mysqli_query($con, "SELECT password FROM  users where password='" . md5($_POST['cpass']) . "' && id='" . $_SESSION['id'] . "'");
-		$num = mysqli_fetch_array($sql);
-		if ($num > 0) {
-			$con = mysqli_query($con, "update students set password='" . md5($_POST['newpass']) . "', updationDate='$currentTime' where id='" . $_SESSION['id'] . "'");
-			echo "<script>alert('Password Changed Successfully !!');</script>";
-		} else {
-			echo "<script>alert('Current Password not match !!');</script>";
-		}
-	}
+    if (isset($_POST['submit'])) {
+        $sql = mysqli_query($con, "SELECT password FROM  users where password='" . md5($_POST['cpass']) . "' && id='" . $_SESSION['id'] . "'");
+        $num = mysqli_fetch_array($sql);
+        if ($num > 0) {
+            $con = mysqli_query($con, "update students set password='" . md5($_POST['newpass']) . "', updationDate='$currentTime' where id='" . $_SESSION['id'] . "'");
+            echo "<script>alert('Password Changed Successfully !!');</script>";
+        } else {
+            echo "<script>alert('Current Password not match !!');</script>";
+        }
+    }
 
 ?>
 <!DOCTYPE html>
@@ -114,7 +114,7 @@ if (strlen($_SESSION['login']) == 0) {
             <div class="breadcrumb-inner">
                 <ul class="list-inline list-unstyled">
                     <li><a href="#">Home</a></li>
-                    <li class='active'>Checkout</li>
+
                 </ul>
             </div><!-- /.breadcrumb-inner -->
         </div><!-- /.container -->
@@ -148,9 +148,10 @@ if (strlen($_SESSION['login']) == 0) {
                                             <div class="col-md-12 col-sm-12 already-registered-login">
 
                                                 <?php
-													$query = mysqli_query($con, "select * from users where id='" . $_SESSION['id'] . "'");
-													while ($row = mysqli_fetch_array($query)) {
-													?>
+                                                    echo $_SESSION['id'];
+                                                    $query = mysqli_query($con, "select * from users where id='7'");
+                                                    while ($row = mysqli_fetch_array($query)) {
+                                                    ?>
 
                                                 <form class="register-form" role="form" method="post">
                                                     <div class="form-group">
@@ -246,7 +247,7 @@ if (strlen($_SESSION['login']) == 0) {
 
                         </div><!-- /.checkout-steps -->
                     </div>
-                    <?php include('includes/myaccount-sidebar.php'); ?>
+
                 </div><!-- /.row -->
             </div><!-- /.checkout-box -->
             <?php include('includes/brands-slider.php'); ?>
@@ -294,17 +295,6 @@ if (strlen($_SESSION['login']) == 0) {
 </html>
 
 
-<style type="text/css">
-body {
-
-
-    background-image: url("img/background.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-
-}
-</style>
 
 
 <?php } ?>

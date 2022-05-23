@@ -2,34 +2,8 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
-$cid = intval($_GET['scid']);
-if (isset($_GET['action']) && $_GET['action'] == "add") {
-	$id = intval($_GET['id']);
-	if (isset($_SESSION['cart'][$id])) {
-		$_SESSION['cart'][$id]['quantity']++;
-	} else {
-		$sql_p = "SELECT * FROM products WHERE id={$id}";
-		$query_p = mysqli_query($con, $sql_p);
-		if (mysqli_num_rows($query_p) != 0) {
-			$row_p = mysqli_fetch_array($query_p);
-			$_SESSION['cart'][$row_p['id']] = array("quantity" => 1, "price" => $row_p['productPrice']);
-			echo "<script>alert('Tender booking has been added')</script>";
-			echo "<script type='text/javascript'> document.location ='my-cart.php'; </script>";
-		} else {
-			$message = "Product ID is invalid";
-		}
-	}
-}
-// COde for Wishlist
-if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
-	if (strlen($_SESSION['login']) == 0) {
-		header('location:login.php');
-	} else {
-		mysqli_query($con, "insert into wishlist(userId,productId) values('" . $_SESSION['id'] . "','" . $_GET['pid'] . "')");
-		echo "<script>alert('Product aaded in wishlist');</script>";
-		header('location:my-wishlist.php');
-	}
-}
+$cid = $_GET['scid'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -110,7 +84,7 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
                     <!-- ================================== TOP NAVIGATION ================================== -->
                     <!-- ================================== TOP NAVIGATION : END ================================== -->
                     <div class="sidebar-module-container">
-                        <h3 class="section-title">shop by</h3>
+
                         <div class="sidebar-filter">
                             <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
                             <div class="sidebar-widget wow fadeInUp outer-bottom-xs ">
@@ -119,12 +93,12 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
                                 </div>
                                 <div class="sidebar-widget-body m-t-10">
                                     <?php $sql = mysqli_query($con, "select id,categoryName  from category");
-									while ($row = mysqli_fetch_array($sql)) {
-									?>
+                                    while ($row = mysqli_fetch_array($sql)) {
+                                    ?>
                                     <div class="accordion">
                                         <div class="accordion-group">
                                             <div class="accordion-heading">
-                                                <a href="category.php?cid=<?php echo $row['id']; ?>"
+                                                <a href="category.php?cid=<?php echo $row['categoryName']; ?>"
                                                     class="accordion-toggle collapsed">
                                                     <?php echo $row['categoryName']; ?>
                                                 </a>
@@ -157,13 +131,9 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
                                         <br />
                                     </div>
 
-                                    <?php $sql = mysqli_query($con, "select subcategory  from subcategory where id='$cid'");
-									while ($row = mysqli_fetch_array($sql)) {
-									?>
-
-                                    <div class="excerpt hidden-sm hidden-md">
-                                        <?php echo htmlentities($row['subcategory']); ?>
-                                    </div>
+                                    <?php $sql = mysqli_query($con, "SELECT *  from subcategory where categoryid='$cid'");
+                                    while ($row = mysqli_fetch_array($sql)) {
+                                    ?>
                                     <?php } ?>
 
                                 </div><!-- /.caption -->
@@ -177,10 +147,10 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
                                 <div class="category-product  inner-top-vs">
                                     <div class="row">
                                         <?php
-										$ret = mysqli_query($con, "select * from products where subCategory='$cid'");
-										$num = mysqli_num_rows($ret);
-										if ($num > 0) {
-											while ($row = mysqli_fetch_array($ret)) { ?>
+                                        $ret = mysqli_query($con, "SELECT * from products where category='$cid'");
+                                        $num = mysqli_num_rows($ret);
+                                        if ($num > 0) {
+                                            while ($row = mysqli_fetch_array($ret)) { ?>
                                         <div class="col-sm-6 col-md-4 wow fadeInUp">
                                             <div class="products">
                                                 <div class="product">
@@ -199,56 +169,25 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
                                                         <h3 class="name"><a
                                                                 href="product-details.php?pid=<?php echo htmlentities($row['id']); ?>"><?php echo htmlentities($row['productName']); ?></a>
                                                         </h3>
-                                                        <div class="rating rateit-small"></div>
+
+                                                        <span
+                                                            style="color:black; font-size:14px;"><?php echo  $row['productCompany']; ?></span><br>
+                                                        <span
+                                                            style="color:green;"><?php echo  $row['category']; ?></span>
+                                                        <br>
+
                                                         <div class="description"></div>
 
-                                                        <div class="product-price">
-                                                            <span class="price">
-                                                                Rs. <?php echo htmlentities($row['productPrice']); ?>
-                                                            </span>
-                                                            <span class="price-before-discount">Rs.
-                                                                <?php echo htmlentities($row['productPriceBeforeDiscount']); ?></span>
-
-                                                        </div><!-- /.product-price -->
-
+                                                        <div class="time" style="color:#d21470; font-weight:600;"
+                                                            id="<?php echo 'trip_' . gmdate("Y/m/d h:i:s:a", $row['updationDate']);
+                                                                                                                                ?>"></div>
                                                     </div><!-- /.product-info -->
-                                                    <div class="cart clearfix animate-effect">
-                                                        <div class="action">
-                                                            <ul class="list-unstyled">
-                                                                <li class="add-cart-button btn-group">
-                                                                    <?php if ($row['productAvailability'] == 'In Stock') { ?>
-                                                                    <button class="btn btn-primary icon"
-                                                                        data-toggle="dropdown" type="button">
-                                                                        <i class="fa fa-shopping-cart"></i>
-                                                                    </button>
-                                                                    <a
-                                                                        href="category.php?page=product&action=add&id=<?php echo $row['id']; ?>">
-                                                                        <button class="btn btn-primary"
-                                                                            type="button">Add a booking</button></a>
-                                                                    <?php } else { ?>
-                                                                    <div class="action" style="color:red">Unavailable
-                                                                    </div>
-                                                                    <?php } ?>
 
-                                                                </li>
-
-                                                                <li class="lnk wishlist">
-                                                                    <a class="add-to-cart"
-                                                                        href="category.php?pid=<?php echo htmlentities($row['id']) ?>&&action=wishlist"
-                                                                        title="Wishlist">
-                                                                        <i class="icon fa fa-heart"></i>
-                                                                    </a>
-                                                                </li>
-
-
-                                                            </ul>
-                                                        </div><!-- /.action -->
-                                                    </div><!-- /.cart -->
                                                 </div>
                                             </div>
                                         </div>
                                         <?php }
-										} else { ?>
+                                        } else { ?>
 
                                         <div class="col-sm-6 col-md-4 wow fadeInUp">
                                             <h3>no tender found</h3>
