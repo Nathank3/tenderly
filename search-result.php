@@ -82,7 +82,7 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
                     </div><!-- /.side-menu -->
                     <!-- ================================== TOP NAVIGATION : END ================================== -->
                     <div class="sidebar-module-container">
-                        <h3 class="section-title">shop by</h3>
+
                         <div class="sidebar-filter">
                             <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
                             <div class="sidebar-widget wow fadeInUp outer-bottom-xs ">
@@ -96,7 +96,7 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
                                     <div class="accordion">
                                         <div class="accordion-group">
                                             <div class="accordion-heading">
-                                                <a href="category.php?cid=<?php echo $row['id']; ?>"
+                                                <a href="category.php?cid=<?php echo $row['categoryName']; ?>"
                                                     class="accordion-toggle collapsed">
                                                     <?php echo $row['categoryName']; ?>
                                                 </a>
