@@ -146,7 +146,8 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
                                         $num = mysqli_num_rows($ret);
                                         if ($num > 0) {
                                             while ($row = mysqli_fetch_array($ret)) { ?>
-                                        <div class="col-sm-6 col-md-4 wow fadeInUp">
+                                        <div class="col-sm-4 col-md-6 wow fadeInUp"
+                                            style="background-color:rgb(255, 255, 255);   box-shadow: 0 0 10px;">
                                             <div class="products">
                                                 <div class="product">
                                                     <div class="product-image">
@@ -155,7 +156,7 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
                                                                 href="product-details.php?pid=<?php echo htmlentities($row['id']); ?>"><img
                                                                     src="assets/images/blank.gif"
                                                                     data-echo="admin/productimages/<?php echo htmlentities($row['id']); ?>/<?php echo htmlentities($row['productImage1']); ?>"
-                                                                    alt="" width="200" height="300"></a>
+                                                                    alt="" width="100%" height="200"></a>
                                                         </div><!-- /.image -->
                                                     </div><!-- /.product-image -->
 
@@ -164,51 +165,26 @@ if (isset($_GET['pid']) && $_GET['action'] == "wishlist") {
                                                         <h3 class="name"><a
                                                                 href="product-details.php?pid=<?php echo htmlentities($row['id']); ?>"><?php echo htmlentities($row['productName']); ?></a>
                                                         </h3>
-                                                        <div class="rating rateit-small"></div>
+
+
+                                                        <span
+                                                            style="color:black; font-weight: 600; font-size:14px;">Company
+                                                            :
+                                                            <?php echo  $row['productCompany']; ?></span><br>
+                                                        <span style="color:green; font-weight: 600;">Category :
+                                                            <?php echo  $row['category']; ?></span>
+                                                        <br> <span style="color:purple; font-weight: 600;">Sub-category
+                                                            :
+                                                            <?php echo  $row['subCategory']; ?></span>
                                                         <div class="description"></div>
 
-                                                        <div class="product-price">
-                                                            <span class="price">
-                                                                Rs. <?php echo htmlentities($row['productPrice']); ?>
-                                                            </span>
-                                                            <span
-                                                                class="price-before-discount">Rs.<?php echo htmlentities($row['productPriceBeforeDiscount']); ?></span>
-
-                                                        </div><!-- /.product-price -->
-
+                                                        <span style="font-weight: 600; display:flex;">Closing In :
+                                                            <div class="time" style="color:#d21470; font-weight:600;">
+                                                                <?php echo  $row['updationDate']; ?>
+                                                            </div>
+                                                        </span>
                                                     </div><!-- /.product-info -->
-                                                    <div class="cart clearfix animate-effect">
-                                                        <div class="action">
-                                                            <ul class="list-unstyled">
-                                                                <li class="add-cart-button btn-group">
-                                                                    <?php if ($row['productAvailability'] == 'In Stock') { ?>
-                                                                    <button class="btn btn-primary icon"
-                                                                        data-toggle="dropdown" type="button">
-                                                                        <i class="fa fa-shopping-cart"></i>
-                                                                    </button>
-                                                                    <a
-                                                                        href="category.php?page=product&action=add&id=<?php echo $row['id']; ?>">
-                                                                        <button class="btn btn-primary"
-                                                                            type="button">Add a booking</button></a>
-                                                                    <?php } else { ?>
-                                                                    <div class="action" style="color:red">Unavailable
-                                                                    </div>
-                                                                    <?php } ?>
 
-                                                                </li>
-
-                                                                <li class="lnk wishlist">
-                                                                    <a class="add-to-cart"
-                                                                        href="category.php?pid=<?php echo htmlentities($row['id']) ?>&&action=wishlist"
-                                                                        title="Wishlist">
-                                                                        <i class="icon fa fa-heart"></i>
-                                                                    </a>
-                                                                </li>
-
-
-                                                            </ul>
-                                                        </div><!-- /.action -->
-                                                    </div><!-- /.cart -->
                                                 </div>
                                             </div>
                                         </div>
