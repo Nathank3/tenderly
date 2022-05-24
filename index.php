@@ -69,7 +69,7 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
                                     <div class="category-product  inner-top-vs">
                                         <div class="row">
                                             <?php
-                                            $ret = mysqli_query($con, "SELECT * from products ORDER BY  id DESC");
+                                            $ret = mysqli_query($con, "SELECT * from products ORDER BY  id DESC LIMIT 6");
                                             $num = mysqli_num_rows($ret);
                                             if ($num > 0) {
                                                 while ($row = mysqli_fetch_array($ret)) { ?>
@@ -103,9 +103,8 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
                                                             <div class="description"></div>
                                                             <span style="font-weight: 600; display:flex;">Closing In :
                                                                 <div class="time"
-                                                                    style="color:#d21470; font-weight:600;"
-                                                                    id="<?php echo 'trip_' . gmdate("Y/m/d h:i:s:a", $row['updationDate']);
-                                                                                                                                        ?>">
+                                                                    style="color:#d21470; font-weight:600;">
+                                                                    <?php echo  $row['updationDate']; ?>
                                                                 </div>
                                                             </span>
 
