@@ -8,7 +8,7 @@ if (!empty($_POST["cat_id"])) {
 <?php
     while ($sub = mysqli_fetch_array($getSub)) {
     ?>
-<option value='<?php echo $sub['subcategory']; ?><'><?php echo $sub['subcategory']; ?></option>
+<option value='<?php echo $sub['subcategory']; ?>'><?php echo $sub['subcategory']; ?></option>
 
 <?php
     }
