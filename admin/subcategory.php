@@ -2,19 +2,19 @@
 session_start();
 include('include/config.php');
 if (strlen($_SESSION['alogin']) == 0) {
-	header('location:index.php');
+    header('location:index.php');
 } else {
-	if (isset($_POST['submit'])) {
-		$category = $_POST['category'];
-		$subcat = $_POST['subcategory'];
-		$sql = mysqli_query($con, "insert into subcategory(categoryid,subcategory) values('$category','$subcat')");
-		$_SESSION['msg'] = "SubCategory Created !!";
-	}
+    if (isset($_POST['submit'])) {
+        $category = $_POST['category'];
+        $subcat = $_POST['subcategory'];
+        $sql = mysqli_query($con, "insert into subcategory(categoryid,subcategory) values('$category','$subcat')");
+        $_SESSION['msg'] = "SubCategory Created !!";
+    }
 
-	if (isset($_GET['del'])) {
-		mysqli_query($con, "delete from subcategory where id = '" . $_GET['id'] . "'");
-		$_SESSION['delmsg'] = "SubCategory deleted !!";
-	}
+    if (isset($_GET['del'])) {
+        mysqli_query($con, "delete from subcategory where id = '" . $_GET['id'] . "'");
+        $_SESSION['delmsg'] = "SubCategory deleted !!";
+    }
 
 ?>
 <!DOCTYPE html>
@@ -75,7 +75,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <select name="category" class="span8 tip" required>
                                                 <option value="">Select Category</option>
                                                 <?php $query = mysqli_query($con, "select * from category");
-													while ($row = mysqli_fetch_array($query)) { ?>
+                                                    while ($row = mysqli_fetch_array($query)) { ?>
 
                                                 <option value="<?php echo $row['categoryName']; ?>">
                                                     <?php echo $row['categoryName']; ?></option>
@@ -116,24 +116,22 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         <tr>
                                             <th>#</th>
                                             <th>Category</th>
-                                            <th>Description</th>
+                                            <th>Subcategory</th>
                                             <th>Creation date</th>
-                                            <th>Last Updated</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
-                                        <?php $query = mysqli_query($con, "select subcategory.id,category.categoryName,subcategory.subcategory,subcategory.creationDate,subcategory.updationDate from subcategory join category on category.id=subcategory.categoryid");
-											$cnt = 1;
-											while ($row = mysqli_fetch_array($query)) {
-											?>
+                                        <?php $query = mysqli_query($con, "SELECT * from  subcategory");
+                                            $cnt = 1;
+                                            while ($row = mysqli_fetch_array($query)) {
+                                            ?>
                                         <tr>
                                             <td><?php echo htmlentities($cnt); ?></td>
-                                            <td><?php echo htmlentities($row['categoryName']); ?></td>
+                                            <td><?php echo htmlentities($row['categoryid']); ?></td>
                                             <td><?php echo htmlentities($row['subcategory']); ?></td>
                                             <td> <?php echo htmlentities($row['creationDate']); ?></td>
-                                            <td><?php echo htmlentities($row['updationDate']); ?></td>
                                             <td>
                                                 <a href="edit-subcategory.php?id=<?php echo $row['id'] ?>"><i
                                                         class="icon-edit"></i></a>
@@ -143,7 +141,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             </td>
                                         </tr>
                                         <?php $cnt = $cnt + 1;
-											} ?>
+                                            } ?>
 
                                 </table>
                             </div>

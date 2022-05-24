@@ -131,9 +131,8 @@ $cid = $_GET['scid'];
 
                                                         <div class="description"></div>
                                                         <span style="font-weight: 600; display:flex;">Closing In :
-                                                            <div class="time" style="color:#d21470; font-weight:600;"
-                                                                id="<?php echo 'trip_' . gmdate("Y/m/d h:i:s:a", $row['updationDate']);
-                                                                                                                                    ?>">
+                                                            <div class="time" style="color:#d21470; font-weight:600;">
+                                                                <?php echo  $row['updationDate']; ?>
                                                             </div>
                                                         </span>
                                                     </div><!-- /.product-info -->

@@ -15,6 +15,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         $productcompany = $_POST['productCompany'];
         $productdescription = $_POST['productDescription'];
         $productavailability = $_POST['productAvailability'];
+        $exp = $_POST['expdate'];
         $productimage1 = $_FILES["productimage1"]["name"];
         $productimage2 = $_FILES["productimage2"]["name"];
         $productimage3 = $_FILES["productimage3"]["name"];
@@ -27,7 +28,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         if (!is_dir($dir)) {
             mkdir("productimages/" . $productid);
         }
-        $exp = $time + (86400 * 3);
+
         move_uploaded_file($_FILES["pdf"]["tmp_name"], "pdfs/" . $pdfsub);
         move_uploaded_file($_FILES["productimage1"]["tmp_name"], "productimages/$productid/" . $_FILES["productimage1"]["name"]);
         move_uploaded_file($_FILES["productimage2"]["tmp_name"], "productimages/$productid/" . $_FILES["productimage2"]["name"]);
