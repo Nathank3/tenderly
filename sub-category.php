@@ -97,7 +97,7 @@ $cid = $_GET['scid'];
                                 <div class="category-product  inner-top-vs">
                                     <div class="row">
                                         <?php
-                                        $ret = mysqli_query($con, "SELECT * from products where category='$cid'");
+                                        $ret = mysqli_query($con, "SELECT * from products where subcategory='$cid'");
                                         $num = mysqli_num_rows($ret);
                                         if ($num > 0) {
                                             while ($row = mysqli_fetch_array($ret)) { ?>
@@ -128,7 +128,9 @@ $cid = $_GET['scid'];
                                                             <?php echo  $row['productCompany']; ?></span><br>
                                                         <span style="color:green; font-weight: 600;">Category :
                                                             <?php echo  $row['category']; ?></span>
-
+                                                        <br> <span style="color:purple; font-weight: 600;">Sub-category
+                                                            :
+                                                            <?php echo  $row['subCategory']; ?></span>
                                                         <div class="description"></div>
                                                         <span style="font-weight: 600; display:flex;">Closing In :
                                                             <div class="time" style="color:#d21470; font-weight:600;">

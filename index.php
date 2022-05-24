@@ -100,6 +100,11 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
                                                             <span style="color:green; font-weight: 600;">Category :
                                                                 <?php echo  $row['category']; ?></span>
 
+                                                            <br> <span
+                                                                style="color:purple; font-weight: 600;">Sub-category
+                                                                :
+                                                                <?php echo  $row['subCategory']; ?></span>
+
                                                             <div class="description"></div>
                                                             <span style="font-weight: 600; display:flex;">Closing In :
                                                                 <div class="time"

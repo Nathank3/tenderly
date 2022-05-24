@@ -43,7 +43,7 @@ $cid = $_GET['cid'];
 
                                         while ($row = mysqli_fetch_array($sql)) {
                                         ?>
-                                        <a href="sub-category.php?scid=<?php echo $row['categoryid']; ?>"
+                                        <a href="sub-category.php?scid=<?php echo $row['subcategory']; ?>"
                                             class="dropdown-toggle"><i class="icon fa fa-desktop fa-fw"></i>
                                             <?php echo $row['subcategory']; ?></a>
                                         <?php } ?>
@@ -95,7 +95,9 @@ $cid = $_GET['cid'];
                                                             <?php echo  $row['productCompany']; ?></span><br>
                                                         <span style="color:green; font-weight: 600;">Category :
                                                             <?php echo  $row['category']; ?></span>
-
+                                                        <br> <span style="color:purple; font-weight: 600;">Sub-category
+                                                            :
+                                                            <?php echo  $row['subCategory']; ?></span>
                                                         <div class="description"></div>
                                                         <span style="font-weight: 600; display:flex;">Closing In :
                                                             <div class="time" style="color:#d21470; font-weight:600;">
