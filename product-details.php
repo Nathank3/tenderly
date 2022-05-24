@@ -235,9 +235,9 @@ if (isset($_POST['submit'])) {
                                         </div>
                                         <div class="col-sm-9">
                                             <div class="stock-box">
-                                                <span class="value" style="font-weight: 600; font-size:14px;"
-                                                    id="<?php echo 'trip_' . gmdate("Y/m/d h:i:s:a", $row['updationDate']);
-                                                                                                                        ?>">></span>
+                                                <span class="value"
+                                                    style="font-weight: 600; font-size:14px;"><?php echo $row['updationDate'];
+                                                                                                                    ?></span>
                                             </div>
                                         </div>
                                     </div><!-- /.row -->
