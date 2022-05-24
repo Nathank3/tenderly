@@ -2,23 +2,21 @@
 session_start();
 include('include/config.php');
 if (strlen($_SESSION['alogin']) == 0) {
-	header('location:index.php');
+    header('location:index.php');
 } else {
-	$pid = intval($_GET['id']); // product id
-	if (isset($_POST['submit'])) {
-		$category = $_POST['category'];
-		$subcat = $_POST['subcategory'];
-		$productname = $_POST['productName'];
-		$productcompany = $_POST['productCompany'];
-		$productprice = $_POST['productprice'];
-		$productpricebd = $_POST['productpricebd'];
-		$productdescription = $_POST['productDescription'];
-		$productscharge = $_POST['productShippingcharge'];
-		$productavailability = $_POST['productAvailability'];
+    $pid = intval($_GET['id']); // product id
+    if (isset($_POST['submit'])) {
+        $category = $_POST['category'];
+        $subcat = $_POST['subcategory'];
+        $productname = $_POST['productName'];
+        $productcompany = $_POST['productCompany'];
+        $productdescription = $_POST['productDescription'];
+        $productavailability = $_POST['productAvailability'];
+        $exp = $_POST['expdate'];
 
-		$sql = mysqli_query($con, "update  products set category='$category',subCategory='$subcat',productName='$productname',productCompany='$productcompany',productPrice='$productprice',productDescription='$productdescription',shippingCharge='$productscharge',productAvailability='$productavailability',productPriceBeforeDiscount='$productpricebd' where id='$pid' ");
-		$_SESSION['msg'] = "Product Updated Successfully !!";
-	}
+        $sql = mysqli_query($con, "UPDATE  products set category='$category',subCategory='$subcat',productName='$productname',productCompany='$productcompany',productAvailability='$productavailability',updationDate = '$exp' where id='$pid' ");
+        $_SESSION['msg'] = "Product Updated Successfully !!";
+    }
 
 
 ?>
@@ -101,13 +99,13 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                     <?php
 
-										$query = mysqli_query($con, "SELECT * from products where id='$pid'");
-										$cnt = 1;
-										while ($row = mysqli_fetch_array($query)) {
+                                        $query = mysqli_query($con, "SELECT * from products where id='$pid'");
+                                        $cnt = 1;
+                                        while ($row = mysqli_fetch_array($query)) {
 
 
 
-										?>
+                                        ?>
 
 
                                     <div class="control-group">
@@ -118,16 +116,16 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 <option value="<?php echo htmlentities($row['category']); ?>">
                                                     <?php echo htmlentities($row['category']); ?></option>
                                                 <?php $query = mysqli_query($con, "SELECT * from  category");
-														while ($rw = mysqli_fetch_array($query)) {
-															if ($row['category'] == $rw['categoryName']) {
-																continue;
-															} else {
-														?>
+                                                        while ($rw = mysqli_fetch_array($query)) {
+                                                            if ($row['category'] == $rw['categoryName']) {
+                                                                continue;
+                                                            } else {
+                                                        ?>
 
                                                 <option value="<?php echo $rw['categoryName']; ?>">
                                                     <?php echo $rw['categoryName']; ?></option>
                                                 <?php }
-														} ?>
+                                                        } ?>
                                             </select>
                                         </div>
                                     </div>
@@ -173,6 +171,12 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 rows="6" class="span8 tip">
 <?php echo htmlentities($row['productDescription']); ?>
 </textarea>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="basicinput">Closing Date</label>
+                                        <div class="controls">
+                                            <input type="date" name="expdate" required>
                                         </div>
                                     </div>
 
