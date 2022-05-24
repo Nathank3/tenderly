@@ -1,15 +1,15 @@
 <?php
 
 if (isset($_Get['action'])) {
-	if (!empty($_SESSION['cart'])) {
-		foreach ($_POST['quantity'] as $key => $val) {
-			if ($val == 0) {
-				unset($_SESSION['cart'][$key]);
-			} else {
-				$_SESSION['cart'][$key]['quantity'] = $val;
-			}
-		}
-	}
+    if (!empty($_SESSION['cart'])) {
+        foreach ($_POST['quantity'] as $key => $val) {
+            if ($val == 0) {
+                unset($_SESSION['cart'][$key]);
+            } else {
+                $_SESSION['cart'][$key]['quantity'] = $val;
+            }
+        }
+    }
 }
 ?>
 <div class="main-header">
@@ -20,7 +20,7 @@ if (isset($_Get['action'])) {
                 <div class="logo">
                     <a href="index.php">
 
-                        <h2>Tenderly</h2>
+                        <h2 style="font-weight: 600; color:green;">Tenderly</h2>
 
                     </a>
                 </div>

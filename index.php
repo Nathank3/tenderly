@@ -26,45 +26,7 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
 <html lang="en">
 
 <head>
-    <!-- Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="keywords" content="MediaCenter, Template, eCommerce">
-    <meta name="robots" content="all">
-
-    <title>Tenderly for you</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-
-    <!-- Customizable CSS -->
-    <link rel="stylesheet" href="assets/css/mainstyle.css">
-    <link rel="stylesheet" href="assets/css/green.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.css">
-    <link rel="stylesheet" href="assets/css/owl.transitions.css">
-    <!--<link rel="stylesheet" href="assets/css/owl.theme.css">-->
-    <link href="assets/css/lightbox.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/rateit.css">
-    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
-
-    <!-- Demo Purpose Only. Should be removed in production -->
-    <link rel="stylesheet" href="assets/css/config.css">
-
-    <link href="assets/css/green.css" rel="alternate stylesheet" title="Green color">
-    <link href="assets/css/blue.css" rel="alternate stylesheet" title="Blue color">
-    <link href="assets/css/red.css" rel="alternate stylesheet" title="Red color">
-    <link href="assets/css/orange.css" rel="alternate stylesheet" title="Orange color">
-    <link href="assets/css/dark-green.css" rel="alternate stylesheet" title="Darkgreen color">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
-
+    <?php include "header.php"; ?>
 </head>
 
 <body class="cnt-home">
@@ -93,210 +55,95 @@ if (isset($_GET['action']) && $_GET['action'] == "add") {
                     <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
                         <!-- ========================================== SECTION – HERO ========================================= -->
                         <center>
-                            <h1 style="align-items: center; font-size:50px;">WELCOME TO TENDERLY</h1>
+                            <h1 style="align-items: center; font-size:50px;  font-weight: 600;">WELCOME TO TENDERLY</h1>
                         </center>
 
-                        <!-- ====TO===================================== SECTION – HERO : END ========================================= -->
-                        <!--
-<div class="info-boxes wow fadeInUp">
-	<div class="info-boxes-inner">
-		<div class="row">
-			<div class="col-md-6 col-sm-4 col-lg-4">
-				<div class="info-box">
-					<div class="row">
-						<div class="col-xs-2">
-						     <i class="icon fa fa-dollar"></i>
-						</div>
-						<div class="col-xs-10">
-							<h4 class="info-box-heading green">money back</h4>
-						</div>
-					</div>
-					<h6 class="text">30 Day Money Back Guarantee.</h6>
-				</div>
-			</div>
-
-			<div class="hidden-md col-sm-4 col-lg-4">
-				<div class="info-box">
-					<div class="row">
-						<div class="col-xs-2">
-							<i class="icon fa fa-truck"></i>
-						</div>
-						<div class="col-xs-10">
-							<h4 class="info-box-heading orange">free shipping</h4>
-						</div>
-					</div>
-					<h6 class="text">free ship-on oder over Ksh 600.00</h6>
-				</div>
-			</div>
-
-			<div class="col-md-6 col-sm-4 col-lg-4">
-				<div class="info-box">
-					<div class="row">
-						<div class="col-xs-2">
-							<i class="icon fa fa-gift"></i>
-						</div>
-						<div class="col-xs-10">
-							<h4 class="info-box-heading red">Special Sale</h4>
-						</div>
-					</div>
-					<h6 class="text">All items-sale up to 20% off </h6>
-				</div>
-			</div>
-		</div>
-	</div>.info-boxes-inner
-
-</div>.info-boxes
-============================================= INFO BOXES : END ============================================== -->
-                    </div><!-- /.homebanner-holder -->
-
-                </div><!-- /.row -->
-
-                <!-- ============================================== SCROLL TABS ============================================== -->
-                <div id="product-tabs-slider" class="scroll-tabs inner-bottom-vs  wow fadeInUp">
-                    <div class="more-info-tab clearfix">
-                        <h3 class="new-product-title pull-left">Latest Tenders</h3><!-- /.nav-tabs -->
                     </div>
 
-                    <div class="tab-content outer-top-xs">
-                        <div class="tab-pane in active" id="all">
-                            <div class="product-slider">
-                                <div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="4">
-                                    <?php
-                                    $ret = mysqli_query($con, "SELECT * FROM products ORDER BY id DESC LIMIT 5");
-                                    while ($row = mysqli_fetch_array($ret)) {
-                                        # code...
+                    <div class='col-md-9'>
+                        <!-- ========================================== SECTION – HERO ========================================= -->
 
-                                    ?>
+                        <div class="search-result-container">
+                            <div id="myTabContent" class="tab-content">
+                                <div class="tab-pane active " id="grid-container">
+                                    <div class="category-product  inner-top-vs">
+                                        <div class="row">
+                                            <?php
+                                            $ret = mysqli_query($con, "SELECT * from products ORDER BY  id DESC");
+                                            $num = mysqli_num_rows($ret);
+                                            if ($num > 0) {
+                                                while ($row = mysqli_fetch_array($ret)) { ?>
 
+                                            <div class="col-sm-4 col-md-6 wow fadeInUp"
+                                                style="background-color:rgb(255, 255, 255);   box-shadow: 0 0 10px;">
 
-                                    <div class="item item-carousel">
-                                        <div class="products">
+                                                <div class="products">
+                                                    <div class="product">
+                                                        <div class="product-image">
+                                                            <div class="image">
+                                                                <a
+                                                                    href="product-details.php?pid=<?php echo htmlentities($row['id']); ?>"><img
+                                                                        src="assets/images/blank.gif"
+                                                                        data-echo="admin/productimages/<?php echo htmlentities($row['id']); ?>/<?php echo htmlentities($row['productImage1']); ?>"
+                                                                        alt="" width="100%" height="200"></a>
+                                                            </div><!-- /.image -->
+                                                        </div><!-- /.product-image -->
+                                                        <div class="product-info text-left">
+                                                            <h3 class="name"><a
+                                                                    href="product-details.php?pid=<?php echo htmlentities($row['id']); ?>"><?php echo htmlentities($row['productName']); ?></a>
+                                                            </h3>
 
-                                            <div class="product">
-                                                <div class="product-image">
-                                                    <div class="image">
-                                                        <a
-                                                            href="product-details.php?pid=<?php echo htmlentities($row['id']); ?>">
-                                                            <img src="admin/productimages/<?php echo htmlentities($row['id']); ?>/<?php echo htmlentities($row['productImage1']); ?>"
-                                                                data-echo="admin/productimages/<?php echo htmlentities($row['id']); ?>/<?php echo htmlentities($row['productImage1']); ?>"
-                                                                width="180" height="300" alt=""></a>
-                                                    </div><!-- /.image -->
+                                                            <span
+                                                                style="color:black; font-weight: 600; font-size:14px;">Company
+                                                                :
+                                                                <?php echo  $row['productCompany']; ?></span><br>
+                                                            <span style="color:green; font-weight: 600;">Category :
+                                                                <?php echo  $row['category']; ?></span>
 
-
-                                                </div><!-- /.product-image -->
-
-
-                                                <div class="product-info text-left">
-                                                    <h3 class="name"><a
-                                                            href="product-details.php?pid=<?php echo htmlentities($row['id']); ?>"><?php echo htmlentities($row['productName']); ?></a>
-                                                    </h3>
-
-                                                    <span
-                                                        style="color:black; font-size:14px;"><?php echo  $row['productCompany']; ?></span><br>
-                                                    <span style="color:green;"><?php echo  $row['category']; ?></span>
-                                                    <br>
-                                                    <div class="description"></div>
-
-                                                    <div class="time" style="color:#d21470; font-weight:600;"
-                                                        id="<?php echo 'trip_' . gmdate("Y/m/d h:i:s:a", $row['updationDate']);
-                                                                                                                        ?>"></div>
-
-                                                </div><!-- /.product-info -->
-
-                                            </div><!-- /.product -->
-
-                                        </div><!-- /.products -->
-                                    </div><!-- /.item -->
-                                    <?php } ?>
-
-                                </div><!-- /.home-owl-carousel -->
-                            </div><!-- /.product-slider -->
-                        </div>
+                                                            <div class="description"></div>
+                                                            <span style="font-weight: 600; display:flex;">Closing In :
+                                                                <div class="time"
+                                                                    style="color:#d21470; font-weight:600;"
+                                                                    id="<?php echo 'trip_' . gmdate("Y/m/d h:i:s:a", $row['updationDate']);
+                                                                                                                                        ?>">
+                                                                </div>
+                                                            </span>
 
 
+                                                        </div><!-- /.product-info -->
 
-
-
-
-
-
-
-
-
-                    </div>
-                </div>
-
-
-                <!-- ============================================== TABS ============================================== -->
-                <div class="sections prod-slider-small outer-top-small">
-                    <?php
-                    //get all cat
-                    $getCat =  mysqli_query($con, "SELECT * FROM  category");
-                    while ($cat = mysqli_fetch_array($getCat)) {
-                    ?>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <section class="section">
-                                <h3 class="section-title"><?php echo $catName = $cat['categoryName']; ?></h3>
-                                <div class="owl-carousel homepage-owl-carousel custom-carousel outer-top-xs owl-theme"
-                                    data-item="2">
-
-                                    <?php
-                                        $ret = mysqli_query($con, "SELECT * from products where category='$catName' ORDER BY id DESC LIMIT 5");
-                                        while ($row = mysqli_fetch_array($ret)) {
-                                        ?>
-
-
-
-                                    <div class="item item-carousel">
-                                        <div class="products">
-
-                                            <div class="product">
-                                                <div class="product-image">
-                                                    <div class="image">
-                                                        <a
-                                                            href="product-details.php?pid=<?php echo htmlentities($row['id']); ?>"><img
-                                                                src="admin/productimages/<?php echo htmlentities($row['id']); ?>/<?php echo htmlentities($row['productImage1']); ?>"
-                                                                data-echo="admin/productimages/<?php echo htmlentities($row['id']); ?>/<?php echo htmlentities($row['productImage1']); ?>"
-                                                                width="180" height="300"></a>
-                                                    </div><!-- /.image -->
-                                                </div><!-- /.product-image -->
-
-
-                                                <div class="product-info text-left">
-                                                    <h3 class="name"><a
-                                                            href="product-details.php?pid=<?php echo htmlentities($row['id']); ?>"><?php echo htmlentities($row['productName']); ?></a>
-                                                    </h3>
-                                                    <span
-                                                        style="color:black; font-size:14px;"><?php echo  $row['productCompany']; ?></span><br>
-                                                    <span
-                                                        style="color:green;"><?php echo  $row['category']; ?></span><br>
-
-
-                                                    <div class="description"></div>
-                                                    <div class="time" style="color:#d21470; font-weight:600;"
-                                                        id="<?php echo 'trip_' . gmdate("Y/m/d h:i:s:a", $row['updationDate']);
-                                                                                                                            ?>"></div>
+                                                    </div>
                                                 </div>
+
                                             </div>
-                                        </div>
-                                        <?php } ?>
+
+                                            <?php }
+                                            } else { ?>
+
+                                            <div class="col-sm-6 col-md-4 wow fadeInUp">
+                                                <h3>no tender found</h3>
+                                            </div>
+
+                                            <?php } ?>
+
+                                        </div><!-- /.row -->
+                                    </div><!-- /.category-product -->
+
+                                </div><!-- /.tab-pane -->
 
 
-                                    </div>
-                            </section>
-                        </div>
+
+                            </div><!-- /.search-result-container -->
+
+                        </div><!-- /.col -->
                     </div>
-                    <?php
-                    }
 
-                    ?>
+
+
+
                 </div>
             </div>
             <!-- ============================================== TABS : END ============================================== -->
-
-
-
 
             <?php include('includes/brands-slider.php'); ?>
         </div>

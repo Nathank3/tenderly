@@ -9,57 +9,7 @@ $cid = $_GET['cid'];
 <html lang="en">
 
 <head>
-    <!-- Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="keywords" content="MediaCenter, Template, eCommerce">
-    <meta name="robots" content="all">
-
-    <title>Product Category</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-
-    <!-- Customizable CSS -->
-    <link rel="stylesheet" href="assets/css/mainstyle.css">
-    <link rel="stylesheet" href="assets/css/green.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.css">
-    <link rel="stylesheet" href="assets/css/owl.transitions.css">
-    <!--<link rel="stylesheet" href="assets/css/owl.theme.css">-->
-    <link href="assets/css/lightbox.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/rateit.css">
-    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
-
-    <!-- Demo Purpose Only. Should be removed in production -->
-    <link rel="stylesheet" href="assets/css/config.css">
-
-    <link href="assets/css/green.css" rel="alternate stylesheet" title="Green color">
-    <link href="assets/css/blue.css" rel="alternate stylesheet" title="Blue color">
-    <link href="assets/css/red.css" rel="alternate stylesheet" title="Red color">
-    <link href="assets/css/orange.css" rel="alternate stylesheet" title="Orange color">
-    <link href="assets/css/dark-green.css" rel="alternate stylesheet" title="Darkgreen color">
-    <!-- Demo Purpose Only. Should be removed in production : END -->
-
-
-    <!-- Icons/Glyphs -->
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-
-    <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
-
-    <!-- HTML5 elements and media queries Support for IE8 : HTML5 shim and Respond.js -->
-    <!--[if lt IE 9]>
-			<script src="assets/js/html5shiv.js"></script>
-			<script src="assets/js/respond.min.js"></script>
-		<![endif]-->
-
+    <?php include "header.php"; ?>
 </head>
 
 <body class="cnt-home">
@@ -119,7 +69,8 @@ $cid = $_GET['cid'];
                                         $num = mysqli_num_rows($ret);
                                         if ($num > 0) {
                                             while ($row = mysqli_fetch_array($ret)) { ?>
-                                        <div class="col-sm-6 col-md-4 wow fadeInUp">
+                                        <div class="col-sm-4 col-md-6 wow fadeInUp"
+                                            style="background-color:rgb(255, 255, 255);   box-shadow: 0 0 10px;">
                                             <div class="products">
                                                 <div class="product">
                                                     <div class="product-image">
@@ -128,7 +79,7 @@ $cid = $_GET['cid'];
                                                                 href="product-details.php?pid=<?php echo htmlentities($row['id']); ?>"><img
                                                                     src="assets/images/blank.gif"
                                                                     data-echo="admin/productimages/<?php echo htmlentities($row['id']); ?>/<?php echo htmlentities($row['productImage1']); ?>"
-                                                                    alt="" width="200" height="300"></a>
+                                                                    alt="" width="100%" height="200"></a>
                                                         </div><!-- /.image -->
                                                     </div><!-- /.product-image -->
 
@@ -139,14 +90,19 @@ $cid = $_GET['cid'];
                                                         </h3>
 
                                                         <span
-                                                            style="color:black; font-size:14px;"><?php echo  $row['productCompany']; ?></span><br>
-                                                        <span
-                                                            style="color:green;"><?php echo  $row['category']; ?></span>
+                                                            style="color:black; font-weight: 600; font-size:14px;">Company
+                                                            :
+                                                            <?php echo  $row['productCompany']; ?></span><br>
+                                                        <span style="color:green; font-weight: 600;">Category :
+                                                            <?php echo  $row['category']; ?></span>
 
                                                         <div class="description"></div>
-                                                        <div class="time" style="color:#d21470; font-weight:600;"
-                                                            id="<?php echo 'trip_' . gmdate("Y/m/d h:i:s:a", $row['updationDate']);
-                                                                                                                                ?>"></div>
+                                                        <span style="font-weight: 600; display:flex;">Closing In :
+                                                            <div class="time" style="color:#d21470; font-weight:600;"
+                                                                id="<?php echo 'trip_' . gmdate("Y/m/d h:i:s:a", $row['updationDate']);
+                                                                                                                                    ?>">
+                                                            </div>
+                                                        </span>
 
                                                     </div><!-- /.product-info -->
 

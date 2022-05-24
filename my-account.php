@@ -35,42 +35,7 @@ if (strlen($_SESSION['login']) == 0) {
 <html lang="en">
 
 <head>
-    <!-- Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="keywords" content="MediaCenter, Template, eCommerce">
-    <meta name="robots" content="all">
-
-    <title>My Account</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-
-    <!-- Customizable CSS -->
-    <link rel="stylesheet" href="assets/css/mainstyle.css">
-    <link rel="stylesheet" href="assets/css/green.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.css">
-    <link rel="stylesheet" href="assets/css/owl.transitions.css">
-    <!--<link rel="stylesheet" href="assets/css/owl.theme.css">-->
-    <link href="assets/css/lightbox.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/rateit.css">
-    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
-
-    <!-- Demo Purpose Only. Should be removed in production -->
-    <link rel="stylesheet" href="assets/css/config.css">
-
-    <link href="assets/css/green.css" rel="alternate stylesheet" title="Green color">
-    <link href="assets/css/blue.css" rel="alternate stylesheet" title="Blue color">
-    <link href="assets/css/red.css" rel="alternate stylesheet" title="Red color">
-    <link href="assets/css/orange.css" rel="alternate stylesheet" title="Orange color">
-    <link href="assets/css/dark-green.css" rel="alternate stylesheet" title="Darkgreen color">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <?php include "header.php"; ?>
     <script type="text/javascript">
     function valid() {
         if (document.chngpwd.cpass.value == "") {
@@ -148,8 +113,8 @@ if (strlen($_SESSION['login']) == 0) {
                                             <div class="col-md-12 col-sm-12 already-registered-login">
 
                                                 <?php
-                                                    echo $_SESSION['id'];
-                                                    $query = mysqli_query($con, "select * from users where id='7'");
+                                                    $sessionId = $_SESSION['login'];
+                                                    $query = mysqli_query($con, "SELECT * from users where email='$sessionId'");
                                                     while ($row = mysqli_fetch_array($query)) {
                                                     ?>
 
@@ -178,7 +143,7 @@ if (strlen($_SESSION['login']) == 0) {
                                                         <input type="text"
                                                             class="form-control unicase-form-control text-input"
                                                             id="contactno" name="contactno" required="required"
-                                                            value="<?php echo $row['contactno']; ?>" maxlength="13">
+                                                            value="0<?php echo $row['contactno']; ?>" maxlength="13">
                                                     </div>
                                                     <button type="submit" name="update"
                                                         class="btn-upper btn btn-primary checkout-page-button">Update</button>
@@ -195,7 +160,7 @@ if (strlen($_SESSION['login']) == 0) {
                             </div>
                             <!-- checkout-step-01  -->
                             <!-- checkout-step-02  -->
-                            <div class="panel panel-default checkout-step-02">
+                            <!-- <div class="panel panel-default checkout-step-02">
                                 <div class="panel-heading">
                                     <h4 class="unicase-checkout-title">
                                         <a data-toggle="collapse" class="collapsed" data-parent="#accordion"
@@ -242,7 +207,7 @@ if (strlen($_SESSION['login']) == 0) {
 
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- checkout-step-02  -->
 
                         </div><!-- /.checkout-steps -->

@@ -45,35 +45,7 @@ if (isset($_POST['submit'])) {
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="keywords" content="MediaCenter, Template, eCommerce">
-    <meta name="robots" content="all">
-    <title>Product Details</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/mainstyle.css">
-    <link rel="stylesheet" href="assets/css/green.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.css">
-    <link rel="stylesheet" href="assets/css/owl.transitions.css">
-    <link href="assets/css/lightbox.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/rateit.css">
-    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="assets/css/config.css">
-
-    <link href="assets/css/green.css" rel="alternate stylesheet" title="Green color">
-    <link href="assets/css/blue.css" rel="alternate stylesheet" title="Blue color">
-    <link href="assets/css/red.css" rel="alternate stylesheet" title="Red color">
-    <link href="assets/css/orange.css" rel="alternate stylesheet" title="Orange color">
-    <link href="assets/css/dark-green.css" rel="alternate stylesheet" title="Darkgreen color">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-
-    <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <?php include "header.php"; ?>
 </head>
 
 <body class="cnt-home">
@@ -203,44 +175,7 @@ if (isset($_POST['submit'])) {
                                 </div><!-- /.single-product-slider -->
 
 
-                                <div class="single-product-gallery-thumbs gallery-thumbs">
 
-                                    <div id="owl-single-product-thumbnails">
-                                        <div class="item">
-                                            <a class="horizontal-thumb active" data-target="#owl-single-product"
-                                                data-slide="1" href="#slide1">
-                                                <img class="img-responsive" alt="" src="assets/images/blank.gif"
-                                                    data-echo="admin/productimages/<?php echo htmlentities($row['id']); ?>/<?php echo htmlentities($row['productImage1']); ?>" />
-                                            </a>
-                                        </div>
-
-                                        <div class="item">
-                                            <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="2"
-                                                href="#slide2">
-                                                <img class="img-responsive" width="85" alt=""
-                                                    src="assets/images/blank.gif"
-                                                    data-echo="admin/productimages/<?php echo htmlentities($row['id']); ?>/<?php echo htmlentities($row['productImage2']); ?>" />
-                                            </a>
-                                        </div>
-                                        <div class="item">
-
-                                            <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="3"
-                                                href="#slide3">
-                                                <img class="img-responsive" width="85" alt=""
-                                                    src="assets/images/blank.gif"
-                                                    data-echo="admin/productimages/<?php echo htmlentities($row['id']); ?>/<?php echo htmlentities($row['productImage3']); ?>"
-                                                    height="200" />
-                                            </a>
-                                        </div>
-
-
-
-
-                                    </div><!-- /#owl-single-product-thumbnails -->
-
-
-
-                                </div>
 
                             </div>
                         </div>
@@ -265,8 +200,8 @@ if (isset($_POST['submit'])) {
                                         </div>
                                         <div class="col-sm-9">
                                             <div class="stock-box">
-                                                <span
-                                                    class="value"><?php echo htmlentities($row['productAvailability']); ?></span>
+                                                <span class="value"
+                                                    style="color:black; font-weight: 600; font-size:14px;"><?php echo htmlentities($row['productAvailability']); ?></span>
                                             </div>
                                         </div>
                                     </div><!-- /.row -->
@@ -283,8 +218,8 @@ if (isset($_POST['submit'])) {
                                         </div>
                                         <div class="col-sm-9">
                                             <div class="stock-box">
-                                                <span
-                                                    class="value"><?php echo htmlentities($row['productCompany']); ?></span>
+                                                <span class="value"
+                                                    style="color:black; font-weight: 600; font-size:14px;"><?php echo htmlentities($row['productCompany']); ?></span>
                                             </div>
                                         </div>
                                     </div><!-- /.row -->
@@ -300,8 +235,9 @@ if (isset($_POST['submit'])) {
                                         </div>
                                         <div class="col-sm-9">
                                             <div class="stock-box">
-                                                <span class="value" id="<?php echo 'trip_' . gmdate("Y/m/d h:i:s:a", $row['updationDate']);
-                                                                            ?>">></span>
+                                                <span class="value" style="font-weight: 600; font-size:14px;"
+                                                    id="<?php echo 'trip_' . gmdate("Y/m/d h:i:s:a", $row['updationDate']);
+                                                                                                                        ?>">></span>
                                             </div>
                                         </div>
                                     </div><!-- /.row -->
@@ -323,32 +259,15 @@ if (isset($_POST['submit'])) {
                                 <div class="quantity-container info-container">
                                     <div class="row">
 
-                                        <div class="col-sm-2">
-                                            <span class="label">Qty :</span>
-                                        </div>
 
-                                        <div class="col-sm-2">
-                                            <div class="cart-quantity">
-                                                <div class="quant-input">
-                                                    <div class="arrows">
-                                                        <div class="arrow plus gradient"><span class="ir"><i
-                                                                    class="icon fa fa-sort-asc"></i></span></div>
-                                                        <div class="arrow minus gradient"><span class="ir"><i
-                                                                    class="icon fa fa-sort-desc"></i></span></div>
-                                                    </div>
-                                                    <input type="text" value="1">
-                                                </div>
-                                            </div>
-                                        </div>
+
 
                                         <div class="col-sm-7">
-                                            <?php if ($row['productAvailability'] == 'In Stock') { ?>
-                                            <a href="product-details.php?page=product&action=add&id=<?php echo $row['id']; ?>"
-                                                class="btn btn-primary"><i
-                                                    class="fa fa-shopping-cart inner-right-vs"></i> Add a booking</a>
-                                            <?php } else { ?>
-                                            <div class="action" style="color:red">Unavailable</div>
-                                            <?php } ?>
+                                            <a href="admin/pdfs/<?php echo $row['pdfName']; ?>" class="btn btn"
+                                                style="background:#265605; color:white;"><i
+                                                    class="fa fa-download inner-right-vs"></i>
+                                                Download Tender Details</a>
+
                                         </div>
 
 
@@ -381,7 +300,6 @@ if (isset($_POST['submit'])) {
                             <div class="col-sm-3">
                                 <ul id="product-tabs" class="nav nav-tabs nav-tab-cell">
                                     <li class="active"><a data-toggle="tab" href="#description">DESCRIPTION</a></li>
-                                    <li><a data-toggle="tab" href="#review">REVIEW</a></li>
                                 </ul><!-- /.nav-tabs #product-tabs -->
                             </div>
                             <div class="col-sm-9">
@@ -394,148 +312,6 @@ if (isset($_POST['submit'])) {
                                         </div>
                                     </div><!-- /.tab-pane -->
 
-                                    <div id="review" class="tab-pane">
-                                        <div class="product-tab">
-
-                                            <div class="product-reviews">
-                                                <h4 class="title">Customer Reviews</h4>
-                                                <?php $qry = mysqli_query($con, "select * from productreviews where productId='$pid'");
-                                                    while ($rvw = mysqli_fetch_array($qry)) {
-                                                    ?>
-
-                                                <div class="reviews" style="border: solid 1px #000; padding-left: 2% ">
-                                                    <div class="review">
-                                                        <div class="review-title"><span
-                                                                class="summary"><?php echo htmlentities($rvw['summary']); ?></span><span
-                                                                class="date"><i
-                                                                    class="fa fa-calendar"></i><span><?php echo htmlentities($rvw['reviewDate']); ?></span></span>
-                                                        </div>
-
-                                                        <div class="text">"<?php echo htmlentities($rvw['review']); ?>"
-                                                        </div>
-                                                        <div class="text"><b>Quality :</b>
-                                                            <?php echo htmlentities($rvw['quality']); ?> Star</div>
-                                                        <div class="text"><b>Price :</b>
-                                                            <?php echo htmlentities($rvw['price']); ?> Star</div>
-                                                        <div class="text"><b>value :</b>
-                                                            <?php echo htmlentities($rvw['value']); ?> Star</div>
-                                                        <div class="author m-t-15"><i class="fa fa-pencil-square-o"></i>
-                                                            <span
-                                                                class="name"><?php echo htmlentities($rvw['name']); ?></span>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <?php } ?>
-                                                <!-- /.reviews -->
-                                            </div><!-- /.product-reviews -->
-                                            <form role="form" class="cnt-form" name="review" method="post">
-
-
-                                                <div class="product-add-review">
-                                                    <h4 class="title">Write your own review</h4>
-                                                    <div class="review-table">
-                                                        <div class="table-responsive">
-                                                            <table class="table table-bordered">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th class="cell-label">&nbsp;</th>
-                                                                        <th>1 star</th>
-                                                                        <th>2 stars</th>
-                                                                        <th>3 stars</th>
-                                                                        <th>4 stars</th>
-                                                                        <th>5 stars</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td class="cell-label">Quality</td>
-                                                                        <td><input type="radio" name="quality"
-                                                                                class="radio" value="1"></td>
-                                                                        <td><input type="radio" name="quality"
-                                                                                class="radio" value="2"></td>
-                                                                        <td><input type="radio" name="quality"
-                                                                                class="radio" value="3"></td>
-                                                                        <td><input type="radio" name="quality"
-                                                                                class="radio" value="4"></td>
-                                                                        <td><input type="radio" name="quality"
-                                                                                class="radio" value="5"></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="cell-label">Price</td>
-                                                                        <td><input type="radio" name="price"
-                                                                                class="radio" value="1"></td>
-                                                                        <td><input type="radio" name="price"
-                                                                                class="radio" value="2"></td>
-                                                                        <td><input type="radio" name="price"
-                                                                                class="radio" value="3"></td>
-                                                                        <td><input type="radio" name="price"
-                                                                                class="radio" value="4"></td>
-                                                                        <td><input type="radio" name="price"
-                                                                                class="radio" value="5"></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="cell-label">Value</td>
-                                                                        <td><input type="radio" name="value"
-                                                                                class="radio" value="1"></td>
-                                                                        <td><input type="radio" name="value"
-                                                                                class="radio" value="2"></td>
-                                                                        <td><input type="radio" name="value"
-                                                                                class="radio" value="3"></td>
-                                                                        <td><input type="radio" name="value"
-                                                                                class="radio" value="4"></td>
-                                                                        <td><input type="radio" name="value"
-                                                                                class="radio" value="5"></td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table><!-- /.table .table-bordered -->
-                                                        </div><!-- /.table-responsive -->
-                                                    </div><!-- /.review-table -->
-
-                                                    <div class="review-form">
-                                                        <div class="form-container">
-
-
-                                                            <div class="row">
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputName">Your Name <span
-                                                                                class="astk">*</span></label>
-                                                                        <input type="text" class="form-control txt"
-                                                                            id="exampleInputName" placeholder=""
-                                                                            name="name" required="required">
-                                                                    </div><!-- /.form-group -->
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputSummary">Summary <span
-                                                                                class="astk">*</span></label>
-                                                                        <input type="text" class="form-control txt"
-                                                                            id="exampleInputSummary" placeholder=""
-                                                                            name="summary" required="required">
-                                                                    </div><!-- /.form-group -->
-                                                                </div>
-
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputReview">Review <span
-                                                                                class="astk">*</span></label>
-
-                                                                        <textarea class="form-control txt txt-review"
-                                                                            id="exampleInputReview" rows="4"
-                                                                            placeholder="" name="review"
-                                                                            required="required"></textarea>
-                                                                    </div><!-- /.form-group -->
-                                                                </div>
-                                                            </div><!-- /.row -->
-
-                                                            <div class="action text-right">
-                                                                <button name="submit"
-                                                                    class="btn btn-primary btn-upper">SUBMIT
-                                                                    REVIEW</button>
-                                                            </div><!-- /.action -->
-
-                                            </form><!-- /.cnt-form -->
-                                        </div><!-- /.form-container -->
-                                    </div><!-- /.review-form -->
 
                                 </div><!-- /.product-add-review -->
 
@@ -553,74 +329,6 @@ if (isset($_POST['submit'])) {
                     $subcid = $row['subCategory'];
                 } ?>
         <!-- ============================================== UPSELL PRODUCTS ============================================== -->
-        <section class="section featured-product wow fadeInUp">
-            <h3 class="section-title">Realted Products </h3>
-            <div class="owl-carousel home-owl-carousel upsell-product custom-carousel owl-theme outer-top-xs">
-
-                <?php
-            $qry = mysqli_query($con, "select * from products where subCategory='$subcid' and category='$cid'");
-            while ($rw = mysqli_fetch_array($qry)) {
-
-            ?>
-
-
-                <div class="item item-carousel">
-                    <div class="products">
-                        <div class="product">
-                            <div class="product-image">
-                                <div class="image">
-                                    <a href="product-details.php?pid=<?php echo htmlentities($rw['id']); ?>"><img
-                                            src="assets/images/blank.gif"
-                                            data-echo="admin/productimages/<?php echo htmlentities($rw['id']); ?>/<?php echo htmlentities($rw['productImage1']); ?>"
-                                            width="150" height="240" alt=""></a>
-                                </div><!-- /.image -->
-
-
-                            </div><!-- /.product-image -->
-
-
-                            <div class="product-info text-left">
-                                <h3 class="name"><a
-                                        href="product-details.php?pid=<?php echo htmlentities($rw['id']); ?>"><?php echo htmlentities($rw['productName']); ?></a>
-                                </h3>
-                                <div class="rating rateit-small"></div>
-                                <div class="description"></div>
-
-                                <div class="product-price">
-                                    <span class="price">
-                                        Ksh.<?php echo htmlentities($rw['productPrice']); ?> </span>
-                                    <span class="price-before-discount">Ksh.
-                                        <?php echo htmlentities($rw['productPriceBeforeDiscount']); ?></span>
-
-                                </div><!-- /.product-price -->
-
-                            </div><!-- /.product-info -->
-                            <div class="cart clearfix animate-effect">
-                                <div class="action">
-                                    <ul class="list-unstyled">
-                                        <li class="add-cart-button btn-group">
-                                            <button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </button>
-                                            <a href="product-details.php?page=product&action=add&id=<?php echo $rw['id']; ?>"
-                                                class="lnk btn btn-primary">Add a booking</a>
-
-                                        </li>
-
-
-                                    </ul>
-                                </div><!-- /.action -->
-                            </div><!-- /.cart -->
-                        </div><!-- /.product -->
-
-                    </div><!-- /.products -->
-                </div><!-- /.item -->
-                <?php } ?>
-
-
-            </div><!-- /.home-owl-carousel -->
-        </section><!-- /.section -->
-
 
         <!-- ============================================== UPSELL PRODUCTS : END ============================================== -->
 
