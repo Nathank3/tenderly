@@ -240,14 +240,14 @@ if (isset($_POST['login'])) {
                         <span class="checkout-subtitle outer-top-xs">Sign Up Today And You'll Be Able To : </span>
                         <div class="checkbox">
                             <label class="checkbox">
-                                Speed your way through preferences
+                                Get notified about new tenders
                             </label>
                             <label class="checkbox">
                                 Track your tender applications easily.
                             </label>
-                            <label class="checkbox">
+                           <!-- <label class="checkbox">
                                 Keep a record of all your tenders won.
-                            </label>
+                            </label>-->
                         </div>
                     </div>
                     <!-- create a new account -->
