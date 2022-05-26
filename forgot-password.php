@@ -4,27 +4,27 @@ error_reporting(0);
 include('includes/config.php');
 
 if (isset($_POST['change'])) {
-	$email = $_POST['email'];
-	$contact = $_POST['contact'];
-	$password = md5($_POST['password']);
-	$query = mysqli_query($con, "SELECT * FROM users WHERE email='$email' and contactno='$contact'");
-	$num = mysqli_fetch_array($query);
-	if ($num > 0) {
-		$extra = "forgot-password.php";
-		mysqli_query($con, "update users set password='$password' WHERE email='$email' and contactno='$contact' ");
-		$host = $_SERVER['HTTP_HOST'];
-		$uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-		header("location:http://$host$uri/$extra");
-		$_SESSION['errmsg'] = "Password Changed Successfully";
-		exit();
-	} else {
-		$extra = "forgot-password.php";
-		$host  = $_SERVER['HTTP_HOST'];
-		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-		header("location:http://$host$uri/$extra");
-		$_SESSION['errmsg'] = "Invalid email id or Contact no";
-		exit();
-	}
+    $email = $_POST['email'];
+    $contact = $_POST['contact'];
+    $password = md5($_POST['password']);
+    $query = mysqli_query($con, "SELECT * FROM users WHERE email='$email' and contactno='$contact'");
+    $num = mysqli_fetch_array($query);
+    if ($num > 0) {
+        $extra = "forgot-password.php";
+        mysqli_query($con, "update users set password='$password' WHERE email='$email' and contactno='$contact' ");
+        $host = $_SERVER['HTTP_HOST'];
+        $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+        header("location:http://$host$uri/$extra");
+        $_SESSION['errmsg'] = "Password Changed Successfully";
+        exit();
+    } else {
+        $extra = "forgot-password.php";
+        $host  = $_SERVER['HTTP_HOST'];
+        $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+        header("location:http://$host$uri/$extra");
+        $_SESSION['errmsg'] = "Invalid email id or Contact no";
+        exit();
+    }
 }
 
 
@@ -35,50 +35,7 @@ if (isset($_POST['change'])) {
 <html lang="en">
 
 <head>
-    <!-- Meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="keywords" content="MediaCenter, Template, eCommerce">
-    <meta name="robots" content="all">
-
-    <title>Tender Portal | Forgot Password</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-
-    <!-- Customizable CSS -->
-    <link rel="stylesheet" href="assets/css/mainstyle.css">
-    <link rel="stylesheet" href="assets/css/green.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.css">
-    <link rel="stylesheet" href="assets/css/owl.transitions.css">
-    <!--<link rel="stylesheet" href="assets/css/owl.theme.css">-->
-    <link href="assets/css/lightbox.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/rateit.css">
-    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
-
-    <!-- Demo Purpose Only. Should be removed in production -->
-    <link rel="stylesheet" href="assets/css/config.css">
-
-    <link href="assets/css/green.css" rel="alternate stylesheet" title="Green color">
-    <link href="assets/css/blue.css" rel="alternate stylesheet" title="Blue color">
-    <link href="assets/css/red.css" rel="alternate stylesheet" title="Red color">
-    <link href="assets/css/orange.css" rel="alternate stylesheet" title="Orange color">
-    <link href="assets/css/dark-green.css" rel="alternate stylesheet" title="Darkgreen color">
-    <!-- Demo Purpose Only. Should be removed in production : END -->
-
-
-    <!-- Icons/Glyphs -->
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-
-    <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <?php include "header.php"; ?>
     <script type="text/javascript">
     function valid() {
         if (document.register.password.value != document.register.confirmpassword.value) {
@@ -130,11 +87,11 @@ if (isset($_POST['change'])) {
                         <form class="register-form outer-top-xs" name="register" method="post">
                             <span style="color:red;">
                                 <?php
-								echo htmlentities($_SESSION['errmsg']);
-								?>
+                                echo htmlentities($_SESSION['errmsg']);
+                                ?>
                                 <?php
-								echo htmlentities($_SESSION['errmsg'] = "");
-								?>
+                                echo htmlentities($_SESSION['errmsg'] = "");
+                                ?>
                             </span>
                             <div class="form-group">
                                 <label class="info-title" for="exampleInputEmail1">Email Address <span>*</span></label>
