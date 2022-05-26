@@ -167,12 +167,14 @@ if (isset($_POST['login'])) {
                         <h4 class="">sign in</h4>
                         <p class="">Hello, Welcome to your account.</p>
                         <form class="register-form outer-top-xs" method="post">
+                            <span style="color:green;">
+                                <?php
+                                echo htmlentities($_SESSION['sucmsg']);
+                                ?>
+                            </span>
                             <span style="color:red;">
                                 <?php
                                 echo htmlentities($_SESSION['errmsg']);
-                                ?>
-                                <?php
-                                echo htmlentities($_SESSION['errmsg'] = "");
                                 ?>
                             </span>
                             <div class="form-group">
@@ -217,7 +219,7 @@ if (isset($_POST['login'])) {
 
                             <div class="form-group">
                                 <label class="info-title" for="contactno">Contact No. <span>*</span></label>
-                                <input type="text" class="form-control unicase-form-control text-input" id="contactno"
+                                <input type="number" class="form-control unicase-form-control text-input" id="contactno"
                                     name="contactno" maxlength="10" required>
                             </div>
 
@@ -245,7 +247,7 @@ if (isset($_POST['login'])) {
                             <label class="checkbox">
                                 Track your tender applications easily.
                             </label>
-                           <!-- <label class="checkbox">
+                            <!-- <label class="checkbox">
                                 Keep a record of all your tenders won.
                             </label>-->
                         </div>

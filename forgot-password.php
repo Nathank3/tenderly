@@ -15,7 +15,7 @@ if (isset($_POST['change'])) {
         $host = $_SERVER['HTTP_HOST'];
         $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
         header("location:http://$host$uri/$extra");
-        $_SESSION['errmsg'] = "Password Changed Successfully";
+        $_SESSION['sucmsg'] = "Password Changed Successfully";
         exit();
     } else {
         $extra = "forgot-password.php";
@@ -85,10 +85,12 @@ if (isset($_POST['change'])) {
                     <div class="col-md-6 col-sm-6 sign-in">
                         <h4 class="">Forgot password</h4>
                         <form class="register-form outer-top-xs" name="register" method="post">
-                            <span style="color:red;">
+                            <span style="color:green;">
                                 <?php
-                                echo htmlentities($_SESSION['errmsg']);
+                                echo htmlentities($_SESSION['sucmsg']);
                                 ?>
+                            </span>
+                            <span style="color:red;">
                                 <?php
                                 echo htmlentities($_SESSION['errmsg'] = "");
                                 ?>
@@ -100,7 +102,7 @@ if (isset($_POST['change'])) {
                             </div>
                             <div class="form-group">
                                 <label class="info-title" for="exampleInputPassword1">Contact no <span>*</span></label>
-                                <input type="text" name="contact" class="form-control unicase-form-control text-input"
+                                <input type="number" name="contact" class="form-control unicase-form-control text-input"
                                     id="contact" required>
                             </div>
                             <div class="form-group">
