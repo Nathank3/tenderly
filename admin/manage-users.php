@@ -2,15 +2,15 @@
 session_start();
 include('include/config.php');
 if (strlen($_SESSION['alogin']) == 0) {
-	header('location:index.php');
+    header('location:index.php');
 } else {
-	date_default_timezone_set('Asia/Kolkata'); // change according timezone
-	$currentTime = date('d-m-Y h:i:s A', time());
+    date_default_timezone_set('Asia/Kolkata'); // change according timezone
+    $currentTime = date('d-m-Y h:i:s A', time());
 
-	if (isset($_GET['del'])) {
-		mysqli_query($con, "delete from products where id = '" . $_GET['id'] . "'");
-		$_SESSION['delmsg'] = "Product deleted !!";
-	}
+    if (isset($_GET['del'])) {
+        mysqli_query($con, "DELETE from users where id = '" . $_GET['id'] . "'");
+        $_SESSION['delmsg'] = "User deleted !!";
+    }
 
 ?>
 <!DOCTYPE html>
@@ -63,23 +63,28 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <th>Email </th>
                                             <th>Contact no</th>
                                             <th>Reg. Date </th>
-
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
                                         <?php $query = mysqli_query($con, "select * from users");
-											$cnt = 1;
-											while ($row = mysqli_fetch_array($query)) {
-											?>
+                                            $cnt = 1;
+                                            while ($row = mysqli_fetch_array($query)) {
+                                            ?>
                                         <tr>
                                             <td><?php echo htmlentities($cnt); ?></td>
                                             <td><?php echo htmlentities($row['name']); ?></td>
                                             <td><?php echo htmlentities($row['email']); ?></td>
                                             <td>0<?php echo htmlentities($row['contactno']); ?></td>
                                             <td><?php echo htmlentities($row['regDate']); ?></td>
+                                            <td style="text-align: center;">
+                                                <a href="manage-users.php?id=<?php echo $row['id'] ?>&del=delete"
+                                                    onClick="return confirm('Are you sure you want to delete?')"><i
+                                                        class="icon-remove-sign"></i></a>
+                                            </td>
                                             <?php $cnt = $cnt + 1;
-											} ?>
+                                            } ?>
 
                                 </table>
                             </div>
