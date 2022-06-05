@@ -219,7 +219,7 @@ if (isset($_POST['login'])) {
 
                             <div class="form-group">
                                 <label class="info-title" for="contactno">Contact No. <span>*</span></label>
-                                <input type="number" class="form-control unicase-form-control text-input" id="contactno"
+                                <input type="number" min="0" class="form-control unicase-form-control text-input" id="contactno"
                                     name="contactno" maxlength="10" required>
                             </div>
 

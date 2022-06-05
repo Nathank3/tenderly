@@ -102,7 +102,7 @@ if (isset($_POST['change'])) {
                             </div>
                             <div class="form-group">
                                 <label class="info-title" for="exampleInputPassword1">Contact no <span>*</span></label>
-                                <input type="number" name="contact" class="form-control unicase-form-control text-input"
+                                <input type="number"  min="0" name="contact" class="form-control unicase-form-control text-input"
                                     id="contact" required>
                             </div>
                             <div class="form-group">

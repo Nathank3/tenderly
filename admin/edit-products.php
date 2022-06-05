@@ -138,6 +138,19 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <select name="subcategory" id="subcategory" class="span8 tip" required>
                                                 <option value="<?php echo htmlentities($row['subCategory']); ?>">
                                                     <?php echo htmlentities($row['subCategory']); ?></option>
+                                                    <?php
+                                                    $categoryid = $row['category'];
+                                                     $query = mysqli_query($con, "SELECT * from  subcategory WHERE categoryid='$categoryid'");
+                                                        while ($rw = mysqli_fetch_array($query)) {
+                                                            if ($row['subCategory'] == $rw['subcategory']) {
+                                                                continue;
+                                                            } else {
+                                                        ?>
+
+                                                <option value="<?php echo $rw['subcategory']; ?>">
+                                                    <?php echo $rw['subcategory']; ?></option>
+                                                <?php }
+                                                        } ?>
                                             </select>
                                         </div>
                                     </div>
@@ -196,7 +209,13 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         </div>
                                     </div>
 
-
+                                    <div class="control-group">
+                                    <label class="control-label" for="basicinput">Product Pdf</label>
+                                        <div class="controls">
+                                         <a
+                                                href="update-pdf.php?id=<?php echo $row['id']; ?>">Change Pdf</a>
+                                        </div>
+                                    </div>
 
                                     <div class="control-group">
                                         <label class="control-label" for="basicinput">Tender Image1</label>

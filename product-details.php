@@ -274,7 +274,7 @@ if (isset($_POST['submit'])) {
                                     </div><!-- /.row -->
                                 </div><!-- /.quantity-container -->
 
-                                <div class="product-social-link m-t-20 text-right">
+                                <!-- <div class="product-social-link m-t-20 text-right">
                                     <span class="social-label">Share :</span>
                                     <div class="social-icons">
                                         <ul class="list-inline">
@@ -283,9 +283,9 @@ if (isset($_POST['submit'])) {
                                             <li><a class="fa fa-linkedin" href="#"></a></li>
                                             <li><a class="fa fa-rss" href="#"></a></li>
                                             <li><a class="fa fa-pinterest" href="#"></a></li>
-                                        </ul><!-- /.social-icons -->
+                                        </ul>
                                     </div>
-                                </div>
+                                </div> -->
 
 
 
